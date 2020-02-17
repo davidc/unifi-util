@@ -1,0 +1,3 @@
+pyunifi >= 2.19
+parallel-ssh
+termcolor
