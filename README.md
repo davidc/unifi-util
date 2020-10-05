@@ -1,5 +1,5 @@
 # unifi-util
-Utilities for a Unifi SDN contorller
+Utilities for a Unifi SDN controller.
 
 ## .unifirc
 
@@ -24,7 +24,11 @@ password = Drowssap1
 ssl_verify = false
 ```
 
-## Exit status
+## unifi-run
+
+Runs a command on all or a subset of devices.
+
+### Exit status
 
 | Status | Meaning |
 | ------ | ------- |
@@ -34,7 +38,7 @@ ssl_verify = false
 | 101 | Error returned when executing on at least one matching AP, but at least one succeeded. |
 | 102 | Error returned when executing on ALL matching APs. |
 
-## Example
+### Example
 
 Run the command ```uptime``` on all sites matching ```*office*```:
 

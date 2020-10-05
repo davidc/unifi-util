@@ -9,7 +9,7 @@ import unifiutil
 from termcolor import cprint
 
 
-parser = argparse.ArgumentParser(description='Run command in parallel on Unifi APs.')
+parser = argparse.ArgumentParser(description='Run command in parallel on Unifi devices.')
 
 parser.add_argument('command', nargs=argparse.REMAINDER,
                     help='the command to run.')
