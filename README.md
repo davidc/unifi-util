@@ -45,3 +45,7 @@ Run the command ```uptime``` on all sites matching ```*office*```:
 ```
 $ ./unifi-run.py -s office uptime
 ```
+
+## unifi-ssh
+
+Opens an interactive shell ssh and automatically logs in.
