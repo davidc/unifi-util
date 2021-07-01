@@ -26,7 +26,7 @@ parser.add_argument('-s', '--site', nargs=1,
 parser.add_argument('-d', '--disabled',
                     default=False,
                     action='store_const', const=True,
-                    help='Run command on disabled APs (bydefault they are skipped)')
+                    help='Run command on disabled APs (by default they are skipped)')
 
 
 unifiutil.add_default_args(parser)
@@ -116,11 +116,13 @@ for site in sites:
             else:
                 print(out, end='')
 
-            if not host_output.exception:
-                for line in host_output.stdout:
-                    print(line)
-                        
-
+            try:
+                if not host_output.exception:
+                    for line in host_output.stdout:
+                        print(line)
+            except Exception as e:
+                cprint("Exception reading output: %s\n" % (str(host_output.exception)), color='red', attrs=['bold'])
+                                
 if not found_ap:
     print("No matching APs found!", file=sys.stderr)
     sys.exit(2)
