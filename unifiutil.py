@@ -8,9 +8,6 @@ from pyunifi.controller import Controller
 def add_default_args(parser):
     parser.add_argument('-c', '--conf', nargs=1,
                         help='A file containing the connection configuration.')
-    
-#    parser.add_argument('-u', '--url', nargs=1,
-#                        help='The URL of the Netbox API.')
 
 
 def handle_args(args):
@@ -32,10 +29,15 @@ def handle_args(args):
 
 
 def get_controller(config):
+    ssl_verify = config.getboolean('ssl_verify') if 'ssl_verify' in config else True
+    if not ssl_verify:
+        import urllib3
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
     c = Controller(config['controller'],
                    config['user'],
                    config['password'],
-                   ssl_verify=config.getboolean('ssl_verify') if 'ssl_verify' in config else True
+                   ssl_verify=ssl_verify
                    )
 
     return c
