@@ -90,7 +90,7 @@ ssh_host = found_device['ip']
 
 r,w = os.pipe()
 
-args = [sshpass, '-d', str(r), '-v', 'ssh', '-l', ssh_username, ssh_host]
+args = [sshpass, '-d', str(r), '-v', 'ssh', '-o', 'StrictHostKeyChecking=no', '-l', ssh_username, ssh_host]
 
 proc = subprocess.Popen(args, pass_fds=[r])
 
